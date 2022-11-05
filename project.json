@@ -1,0 +1,62 @@
+{
+	"file": "index.html",
+	"general": {
+		"properties": {
+			"apikey": {
+				"index": 0,
+				"order": 100,
+				"text": "API key",
+				"type": "textinput",
+				"value": ""
+			},
+			"imagesize": {
+				"index": 2,
+				"options": [
+					{
+						"label": "256x256",
+						"value": "256"
+					},
+					{
+						"label": "512x512",
+						"value": "512"
+					},
+					{
+						"label": "1024x1024",
+						"value": "1024"
+					}
+				],
+				"order": 102,
+				"text": "Custom image size",
+				"type": "combo",
+				"value": "1024"
+			},
+			"interval": {
+				"fraction": false,
+				"index": 3,
+				"max": 86400,
+				"min": 10,
+				"order": 103,
+				"text": "Interval in seconds",
+				"type": "slider",
+				"value": 30
+			},
+			"prompt": {
+				"index": 1,
+				"order": 101,
+				"text": "Custom prompt",
+				"type": "textinput",
+				"value": ""
+			},
+			"schemecolor": {
+				"order": 0,
+				"text": "ui_browse_properties_scheme_color",
+				"type": "color",
+				"value": "0 0 0"
+			}
+		}
+	},
+	"preview": "preview.jpg",
+	"title": "Open AI DALL·E 2",
+	"type": "web",
+	"version": 0
+}
