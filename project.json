@@ -18,6 +18,15 @@
 				"type": "file",
 				"value": ""
 			},
+			"backgroundvideo": {
+				"condition": "",
+				"fileType": "video",
+				"index": 5,
+				"order": 105,
+				"text": "Background video",
+				"type": "file",
+				"value": ""
+			},
 			"imagesize": {
 				"index": 2,
 				"options": [
@@ -67,8 +76,8 @@
 	"preview": "preview.jpg",
 	"tags": ["Unspecified"],
 	"title": "Open AI DALL·E 2 Slideshow",
-	"type": "Web",
-	"version": 2,
+	"type": "web",
+	"version": 3,
 	"visibility": "public",
 	"workshopid": "2885176110",
 	"workshopurl": "steam://url/CommunityFilePage/2885176110"

@@ -12,9 +12,10 @@ const sleepSeconds = (s) => {
 	return new Promise((resolve) => setTimeout(resolve, s * 1000));
 };
 
-const setImageSizeToWindowSize = () => {
-	imageWidthProperty = getWindowWidth();
-	imageHeightProperty = getWindowHeight();
+const convertColor = (value) => {
+	return value.split(" ").map((c) => {
+		return Math.ceil(c * 255);
+	});
 };
 
 const getWindowHeight = () => {
@@ -25,8 +26,21 @@ const getWindowWidth = () => {
 	return window.innerWidth;
 };
 
-const setBodyBackgroundColor = (color) => {
+const setImageSizeToWindowSize = () => {
+	imageWidthProperty = getWindowWidth();
+	imageHeightProperty = getWindowHeight();
+};
+
+const setBackgroundColor = (color) => {
 	document.body.style.backgroundColor = color;
+};
+
+const setBackgroundImage = (value) => {
+	document.body.style.backgroundImage = value;
+};
+
+const setBackgroundVideo = (value) => {
+	document.getElementById("background-video").src = value;
 };
 
 const waitIntervalOrReset = async (interval) => {
@@ -43,16 +57,9 @@ const waitUntilPropertiesAreSet = async () => {
 };
 
 const runRoutine = async () => {
-	const imageElement = document.getElementById("background-image");
-
-	if (!imageElement) {
-		console.error("image element not found");
-		return;
-	}
-
-	imageElement.src = IMAGE_PLACEHOLDER_URL;
-
 	await waitUntilPropertiesAreSet();
+
+	const imageElement = document.getElementById("showcase-image");
 
 	while (true) {
 		if (apiKeyProperty) {
@@ -84,21 +91,18 @@ const runRoutine = async () => {
 				const responseBody = await response.json();
 
 				if ("data" in responseBody) {
-					imageUrl = responseBody.data[0].url;
+					imageElement.classList.remove("loading");
+					imageElement.src = responseBody.data[0].url;
 				} else {
 					console.error(responseBody);
 				}
 			}
 		}
 
-		imageElement.src = imageUrl;
-
 		await waitIntervalOrReset(intervalInSecondsProperty);
 		propertiesChanged = false;
 	}
 };
-
-const IMAGE_PLACEHOLDER_URL = "preview.jpg";
 
 const somePrompts = ["cat", "dog", "tree"];
 
@@ -133,20 +137,23 @@ window.wallpaperPropertyListener = {
 		}
 
 		if (properties.schemecolor) {
-			const customColor = properties.schemecolor.value.split(" ").map((c) => {
-				return Math.ceil(c * 255);
-			});
-			setBodyBackgroundColor(`rgb(${customColor})`);
+			setBackgroundColor(`rgb(${convertColor(properties.schemecolor.value)})`);
 		} else {
-			setBodyBackgroundColor(null);
+			setBackgroundColor(null);
 		}
 
 		intervalInSecondsProperty = properties.interval?.value || null;
 
 		if (properties.backgroundimage) {
-			document.body.style.backgroundImage = `url("file:///${properties.backgroundimage.value}")`;
+			setBackgroundImage(`url("file:///${properties.backgroundimage.value}")`);
 		} else {
-			document.body.style.backgroundImage = null;
+			setBackgroundImage(null);
+		}
+
+		if (properties.backgroundvideo) {
+			setBackgroundVideo(`file:///${properties.backgroundvideo.value}`);
+		} else {
+			setBackgroundVideo(null);
 		}
 
 		propertiesSet = true;
