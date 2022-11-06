@@ -1,4 +1,6 @@
 {
+	"contentrating": "Everyone",
+	"description": "A web based wallpaper that displays images generated with DALL·E 2.\nYou can specify a prompt, slideshow interval and resolution that the generated image should have.\n\nTo use the OPEN AI API you have to generate a key. Follow the steps provided at https://openai.com/api/ and set the \"API key\" property of the wallpaper.\n\nGitHub: https://github.com/valentinschabschneider/dall-e-wallpaper-engine",
 	"file": "index.html",
 	"general": {
 		"properties": {
@@ -56,7 +58,10 @@
 		}
 	},
 	"preview": "preview.jpg",
-	"title": "Open AI DALL·E 2",
+	"tags": ["Unspecified"],
+	"title": "Open AI DALL·E 2 Slideshow",
 	"type": "web",
-	"version": 0
+	"version": 1,
+	"workshopid": "2885176110",
+	"workshopurl": "steam://url/CommunityFilePage/2885176110"
 }
