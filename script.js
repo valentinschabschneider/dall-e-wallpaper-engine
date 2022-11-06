@@ -98,8 +98,7 @@ const runRoutine = async () => {
 	}
 };
 
-const IMAGE_PLACEHOLDER_URL =
-	"https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/306009231_580108473910767_2088220748777882536_n.png?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=mN77TJl_IoQAX-R1piv&_nc_ht=scontent-vie1-1.xx&oh=00_AfA20bNelYc1jngOw6qwGKWLbvEzC3tOkifXKK_W5plDRA&oe=636B2E68";
+const IMAGE_PLACEHOLDER_URL = "preview.jpg";
 
 const somePrompts = ["cat", "dog", "tree"];
 
@@ -137,12 +136,18 @@ window.wallpaperPropertyListener = {
 			const customColor = properties.schemecolor.value.split(" ").map((c) => {
 				return Math.ceil(c * 255);
 			});
-			setBodyBackgroundColor("rgb(" + customColor + ")");
+			setBodyBackgroundColor(`rgb(${customColor})`);
 		} else {
 			setBodyBackgroundColor(null);
 		}
 
 		intervalInSecondsProperty = properties.interval?.value || null;
+
+		if (properties.backgroundimage) {
+			document.body.style.backgroundImage = `url("file:///${properties.backgroundimage.value}")`;
+		} else {
+			document.body.style.backgroundImage = null;
+		}
 
 		propertiesSet = true;
 		propertiesChanged = true;

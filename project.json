@@ -11,6 +11,13 @@
 				"type": "textinput",
 				"value": ""
 			},
+			"backgroundimage": {
+				"index": 4,
+				"order": 104,
+				"text": "Background image",
+				"type": "file",
+				"value": ""
+			},
 			"imagesize": {
 				"index": 2,
 				"options": [
@@ -60,8 +67,9 @@
 	"preview": "preview.jpg",
 	"tags": ["Unspecified"],
 	"title": "Open AI DALL·E 2 Slideshow",
-	"type": "web",
-	"version": 1,
+	"type": "Web",
+	"version": 2,
+	"visibility": "public",
 	"workshopid": "2885176110",
 	"workshopurl": "steam://url/CommunityFilePage/2885176110"
 }

@@ -3,6 +3,8 @@ body {
 	width: 100vw;
 	margin: 0;
 	overflow: hidden;
+
+	background-size: cover;
 }
 
 #background-image {
@@ -15,6 +17,4 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-
-	/* object-fit: cover; */
 }
